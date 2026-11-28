@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dirojve5idjcs"]
+
+[ext_resource type="Script" uid="uid://ggyv0gb308oi" path="res://audioplayer/AudioPlayer.cs" id="1_3hi1e"]
+[ext_resource type="AudioStream" uid="uid://c3mg38wvqblhu" path="res://audioplayer/bulletsounds.mp3" id="2_7ek4r"]
+
+[node name="AudioPlayer" type="Node2D" unique_id=1441581751 node_paths=PackedStringArray("_audio")]
+script = ExtResource("1_3hi1e")
+_audio = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=103277248]
+stream = ExtResource("2_7ek4r")

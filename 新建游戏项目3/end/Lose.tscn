@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://yuro7abxtfeh"]
+
+[ext_resource type="Texture2D" uid="uid://o1wf35vivdbf" path="res://end/background.png" id="1_yxdpo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxdpo"]
+
+[node name="Lose" type="Node2D" unique_id=223822707]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2025975749]
+modulate = Color(1, 1, 1, 0.50200003)
+texture = ExtResource("1_yxdpo")
+
+[node name="Label" type="Label" parent="." unique_id=559795485]
+offset_left = -399.00003
+offset_top = -269.0
+offset_right = -317.00003
+offset_bottom = -221.3
+scale = Vector2(10, 10)
+text = "YOU LOSE!"
+label_settings = SubResource("LabelSettings_yxdpo")

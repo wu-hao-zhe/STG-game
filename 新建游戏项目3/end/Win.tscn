@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0ltay45i4nl6"]
+
+[ext_resource type="Texture2D" uid="uid://o1wf35vivdbf" path="res://end/background.png" id="1_rn63w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+
+[node name="Win" type="Node2D" unique_id=284820807]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1398155904]
+modulate = Color(1, 1, 1, 0.50200003)
+texture = ExtResource("1_rn63w")
+
+[node name="Label" type="Label" parent="." unique_id=79950583]
+offset_left = -388.0
+offset_top = -272.99997
+offset_right = -307.3
+offset_bottom = -225.29997
+scale = Vector2(10, 10)
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_1vivr")

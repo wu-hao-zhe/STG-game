@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://doletxgbyjhrb"]
+
+[ext_resource type="Script" uid="uid://cde1pbqrvck7d" path="res://character/bullet/Bullet.cs" id="1_xsxux"]
+[ext_resource type="PackedScene" uid="uid://dirojve5idjcs" path="res://audioplayer/AudioPlayer.tscn" id="2_mmxeh"]
+[ext_resource type="Texture2D" uid="uid://ceoxox854eonu" path="res://icon.svg" id="2_rdfh0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+
+[node name="Bullet" type="Node2D" unique_id=1459875017 node_paths=PackedStringArray("DelayTimer", "HitArea", "WorldRoot")]
+script = ExtResource("1_xsxux")
+DelayTimer = NodePath("Timer")
+HitArea = NodePath("Area2D")
+WorldRoot = NodePath(".")
+AudioPrefab = ExtResource("2_mmxeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762686846]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rdfh0")
+
+[node name="Timer" type="Timer" parent="." unique_id=1680499167]
+wait_time = 0.05
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1925978300]
+collision_layer = 8
+collision_mask = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2105488073]
+shape = SubResource("RectangleShape2D_1vivr")

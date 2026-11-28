@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ccn32kxam7xci"]
+
+[ext_resource type="Texture2D" uid="uid://ceoxox854eonu" path="res://icon.svg" id="1_6ejuk"]
+[ext_resource type="Script" uid="uid://lvbxw50sc4ru" path="res://character/enemy/Enemy.cs" id="1_h5nwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(84, 86)
+
+[node name="Enemy" type="Node2D" unique_id=1885802975 node_paths=PackedStringArray("HitArea")]
+script = ExtResource("1_h5nwe")
+HitArea = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1190031883]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=589535304]
+position = Vector2(44.999996, 44.999996)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490565101]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(44.999996, 44.999996)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_6ejuk")

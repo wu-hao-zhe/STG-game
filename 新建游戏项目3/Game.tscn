@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cdymt0ifjcb2h"]
+
+[ext_resource type="Script" uid="uid://bnktunsk7co1r" path="res://Game.cs" id="1_wbfu4"]
+[ext_resource type="PackedScene" uid="uid://ccn32kxam7xci" path="res://character/enemy/Enemy.tscn" id="2_u44n3"]
+[ext_resource type="PackedScene" uid="uid://dkx2ofmaukei6" path="res://character/player/Player.tscn" id="2_xkndl"]
+[ext_resource type="Texture2D" uid="uid://ceoxox854eonu" path="res://icon.svg" id="4_sb48q"]
+[ext_resource type="PackedScene" uid="uid://b8213c8cj7gmb" path="res://character/boss/Boss.tscn" id="5_t88pq"]
+[ext_resource type="Script" uid="uid://3vi3jws3xclk" path="res://Area2d2.cs" id="6_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://yuro7abxtfeh" path="res://end/Lose.tscn" id="7_joorw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1vivr"]
+rough = true
+absorbent = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1vivr"]
+normal = Vector2(0.99999833, -0.0018450153)
+distance = -571.0082
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5gy4"]
+normal = Vector2(-0.9999983, 0.001890356)
+distance = -570.0198
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8vrlf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auskg"]
+normal = Vector2(0.012577622, 0.9999209)
+distance = -325.26987
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(20, 328)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d2pp6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vekm"]
+size = Vector2(1120, 20)
+
+[node name="Game" type="Node2D" unique_id=896472890 node_paths=PackedStringArray("WorldRoot", "SpawnTime", "_score")]
+script = ExtResource("1_wbfu4")
+EnemyPrefab = ExtResource("2_u44n3")
+BossPrefab = ExtResource("5_t88pq")
+WorldRoot = NodePath(".")
+SpawnTime = NodePath("Timer")
+_score = NodePath("Label")
+metadata/_edit_vertical_guides_ = [-209.0, 425.0]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1187941304]
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." unique_id=1756628546 instance=ExtResource("2_xkndl")]
+position = Vector2(0, 245.99998)
+
+[node name="Timer" type="Timer" parent="." unique_id=259903262]
+wait_time = 0.6
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1632607251]
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_1vivr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1562080226]
+shape = SubResource("WorldBoundaryShape2D_1vivr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=386762959]
+shape = SubResource("WorldBoundaryShape2D_v5gy4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=452219028]
+position = Vector2(0, 319)
+shape = SubResource("WorldBoundaryShape2D_8vrlf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1203324394]
+shape = SubResource("WorldBoundaryShape2D_auskg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1345281601]
+self_modulate = Color(0.27450982, 0.27450982, 0.27450982, 1)
+position = Vector2(-208.5, -79.74999)
+scale = Vector2(0.16406246, 4.1679688)
+texture = ExtResource("4_sb48q")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2003823804]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=56678196]
+position = Vector2(-208, 23)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1122411086]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1090657735]
+position = Vector2(-404, 145)
+shape = SubResource("WorldBoundaryShape2D_d2pp6")
+
+[node name="Label" type="Label" parent="." unique_id=1619163210]
+offset_left = 372.0
+offset_top = -299.0
+offset_right = 433.0
+offset_bottom = -276.0
+scale = Vector2(3, 3)
+text = "/50"
+label_settings = SubResource("LabelSettings_1vivr")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=535623981 node_paths=PackedStringArray("HitArea")]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("6_3mrqo")
+HitArea = NodePath(".")
+UIPrefab = ExtResource("7_joorw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=744817632]
+position = Vector2(0, 319)
+shape = SubResource("RectangleShape2D_2vekm")

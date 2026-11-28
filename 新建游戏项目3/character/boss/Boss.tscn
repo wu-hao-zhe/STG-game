@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b8213c8cj7gmb"]
+
+[ext_resource type="Texture2D" uid="uid://ceoxox854eonu" path="res://icon.svg" id="1_5nley"]
+[ext_resource type="Script" uid="uid://dv78mdq1nbhx5" path="res://character/boss/Boss.cs" id="1_y0kre"]
+[ext_resource type="PackedScene" uid="uid://c0ltay45i4nl6" path="res://end/Win.tscn" id="2_xxtyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(147, 146)
+
+[node name="Boss" type="CharacterBody2D" unique_id=282949117 node_paths=PackedStringArray("HitArea", "WorldRoot")]
+scale = Vector2(2, 2)
+collision_layer = 32
+collision_mask = 40
+script = ExtResource("1_y0kre")
+HitArea = NodePath("Area2D")
+UIPrefab = ExtResource("2_xxtyt")
+WorldRoot = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1182400757]
+self_modulate = Color(1, 1, 0, 1)
+texture = ExtResource("1_5nley")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610102245]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=316346942]
+collision_layer = 32
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1693715370]
+shape = SubResource("RectangleShape2D_1vivr")
